@@ -1,0 +1,26 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: sample-hello-work-build-config
+  namespace: giovanni-manzone-dev
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'sample-hello-work:latest'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: 'default-route-openshift-image-registry.apps.rm1.0a51.p1.openshiftapps.com/openshift/ubi8-openjdk-21:1.18'
+  postCommit:
+    script: |
+      echo "Build completata con successo!"
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/gcryptolo/sample-hello-work.git'
+      ref: main
+    contextDir: /
+  runPolicy: Serial
