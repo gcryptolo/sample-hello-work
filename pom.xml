@@ -44,7 +44,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.example.MainApplication</mainClass>
+                    <mainClass>it.test.cryptolo.CryptoloApplication</mainClass>
                     <layout>JAR</layout>
                 </configuration>
                 <executions>
