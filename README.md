@@ -1,6 +1,11 @@
 # sample-hello-work
 sample hello work for OpenShift Sandbox buildConfig personal LAB-1
 
+refer to [OpenShift Sandbox](https://www.redhat.com/en/openshift/sandbox) for more information about OpenShift Sandbox
+refer to [BuildConfig Documentation](https://docs.redhat.com/de/documentation/openshift_container_platform/4.14/pdf/builds_using_buildconfig/openshift_container_platform-4.14-builds_using_buildconfig-en-us.pdf) for tecnical information about BuildConfig.
+
+
+
 
 # sample-hello-work LAB-1 index
 
