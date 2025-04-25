@@ -1,8 +1,8 @@
 # sample-hello-work
 sample hello work for OpenShift Sandbox buildConfig personal LAB-1
 
-refer to [OpenShift Sandbox](https://www.redhat.com/en/openshift/sandbox) for more information about OpenShift Sandbox
-refer to [BuildConfig Documentation](https://docs.redhat.com/de/documentation/openshift_container_platform/4.14/pdf/builds_using_buildconfig/openshift_container_platform-4.14-builds_using_buildconfig-en-us.pdf) for tecnical information about BuildConfig.
+refer to [OpenShift Sandbox](https://developers.redhat.com/developer-sandboxx) for more information about OpenShift Sandbox
+refer to [BuildConfig Documentation](https://docs.redhat.com/de/documentation/openshift_container_platform/4.14/pdf/builds_using_buildconfig/openshift_container_platform-4.14-builds_using_buildconfig-en-us.pdf) for technical information about BuildConfig.
 
 
 
@@ -13,12 +13,21 @@ This repository is intended to be a sample hello work for the following:
 
 - Create sample java project to test buildConfig in Openshift Sandbox
 
+- Tecnologies used:
+  - Java 21
+  - Spring Boot 3.2.0
+  - Maven 3.9.0
+  - Docker 
+  - OpenShift Sandbox version 4.14
+  - OpenShift CLI (oc)
+
 ## Pre-requisites
 
  - Familiarity with Docker
- - Familiarity with OpenShift
- - RedHat Account and Sandbox Access
- - GitHub Account
+ - Familiarity with OpenShift 
+ - RedHat Account and Sandbox Access  [OpenShift Sandbox](https://developers.redhat.com/developer-sandbox)
+ - GitHub Account  [GitHub](https://github.com/)
+ - OC CLI installed
 
 About 2 hours of work if you are familiar with Openshift and Docker
 
@@ -30,17 +39,17 @@ About 2 hours of work if you are familiar with Openshift and Docker
 
 ## Steps
 
-1. Check project name (like k8s namespace) in your OpenShift Sandbox for me is '<username>-dev' 
+1. Check project name (like k8s namespace) in your OpenShift Sandbox for me is 'giovanni-manzone-dev' 
 2. Checkout this sample project
 3. Create a new repository in your GitHub account
 4. Import this project to your gitHub repository
 5. Create BuildConfig in your OpenShift Sandbox pointing gitHub repository
 6. Create ImageStream in your OpenShift Sandbox
-7. Crete Deployment using ImageStream
+7. Create Deployment using ImageStream
 8. Create Service to access the application
 9. Create Route to access the application
-9. Check the application
-10. Modify the code and redeploy
+10. Check the application
+11. Modify the code and redeploy
 
 ### Step 1: Check project name
 
@@ -69,7 +78,7 @@ For java project, you can use your own project or you can use the sample project
 
 ### Step 4: Import this project to your gitHub repository
 
-Now we have to create a java project and import it to our gitHub repository. You can use your simple java project or you can use the sample project in this repository.
+Now we have to create a java project and import it to our GitHub repository. You can use your simple java project or you can use the sample project in this repository.
 
 If you want to use the sample project in this repository, you can follow the following steps:
 1. Clone the project to your local machine
@@ -79,7 +88,7 @@ If you want to use the sample project in this repository, you can follow the fol
 5. Commit and push the code to your new repository
 6. Try the code running the simple spring boot application that respond at /hello
 
-If you prefer dont clone the project you can use this as it is and your Openshift take  care to download this repo and build the project.
+If you prefer don't clone the project you can use this as it is and your Openshift take  care to download this repo and build the project.
 
 otherwise, you can use your own project and push it to your new repository.
 For this lab I use java 21 to build the project with Openshift image so you also need to use java 21 to build your project.
@@ -104,16 +113,16 @@ The last thing is that you need to use the following plugin in your pom.xml file
 
 ```
 
-### Step 5: Create BuildConfig in your OpenShift Sandbox pointing gitHub repository
+### Step 5: Create BuildConfig in your OpenShift Sandbox pointing GitHub repository
 If you are using the sample project in this repository, you can use the buildConfig.yaml file in the doc folder to create the BuildConfig in your OpenShift Sandbox and follow the steps below:
 
 1. Go to your OpenShift Sandbox
 2. Click on 'Build Configs' on the top menu
 3. Click on 'Create BuildConfig' on the top right corner
 4. if you did not clone repo simply select YAML tab and copy the code in [doc/buildConfig.yaml](doc/buildConfig.yaml) file 
-5. If you clone the repo or you are using your own project replace the <your-project-name> with your OpenShift Sandbox project name
-6. Replace the <gitHubRepository> with your GitHub repository URL
-7. Replace the <gitHubBranch> with your GitHub branch name (for example main)
+5. If you clone the repo or you are using your own project replace the &lt;your-project-name&gt; with your OpenShift Sandbox project name
+6. Replace the &lt;gitHubRepository&gt; with your GitHub repository URL
+7. Replace the &lt;gitHubBranch&gt; with your GitHub branch name (for example main)
 8. Click on 'Create' button
 
 ```
@@ -154,7 +163,7 @@ We have to create the ImageStream to store the image that will be created by the
 2. Click on 'Image Streams' on the top menu
 3. Click on 'Create ImageStream' on the top right corner
 4. if you did not clone repo simply select YAML tab and copy the code in [doc/imageStream.yaml](doc/imageStream.yaml) file and change the namespace value with your project name.
-5. If you clone the repo or you are using your own project replace also the <your-project-name> with your OpenShift Sandbox project name
+5. If you clone the repo or you are using your own project replace also the &lt;your-project-name&gt; with your OpenShift Sandbox project name
 
 
 ```
@@ -166,7 +175,7 @@ metadata:
 
 ```
 
-Now you can see the builConfig runnning and you can check the build, in the Build menu, you can see the build running and you can check the logs of the build.
+Now you can see the buildConfig running and you can check the build, in the Build menu, you can see the build running and you can check the logs of the build.
 
 ### Step 7: Create Deployment using ImageStream
 
@@ -186,9 +195,9 @@ now we simply create service using oc command to expose our deployment typing th
 oc expose deployment <your-java-project-name> --port=8080 --target-port=8080
 ```
 
-replace <your-java-project-name> with your java project name, for example sample-hello-work
+Replace &lt;your-java-project-name&gt; with your java project name, for example sample-hello-work
 
-you can check the service is created in Networking -> Services menù.
+you can check the service is created in Networking -> Services menu.
 
 ### Step 9: Create Route to access the application
 
@@ -206,7 +215,7 @@ Now you can see the created route in your OpenShift Sandbox, you can check the r
 
 ### Step 10: Check the application
 
-Retrive URL from Openshift Console by clicking on Routes menu and then click on the route you created in the previous step, you can see the URL of the route.
+retrieve URL from Openshift Console by clicking on Routes menu and then click on the route you created in the previous step, you can see the URL of the route.
 
 ![img_2.png](doc%2Fimg%2Fimg_2.png)
 
@@ -246,4 +255,9 @@ You can set the permission in your Openshift Sandbox by typing the following com
 
 ```
 oc policy add-role-to-user system:webhook -n <your-project-name> -z default
+oc adm policy add-role-to-group system:webhook system:unauthenticated -n <your-project-name>
 ```
+Now finally you can see your webhook working and you can see the buildConfig running in your OpenShift Sandbox.
+After buildConfig is completed you can see the deployment changing the image because  the ImageStream is updated with the new image.
+
+
