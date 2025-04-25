@@ -235,3 +235,10 @@ the defined secret <secret> is the one you defined in the buildConfig.yaml file,
 ```
 https://api.rm1.0a51.p1.openshiftapps.com:6443/apis/build.openshift.io/v1/namespaces/giovanni-manzone-dev/buildconfigs/sample-hello-work-build-config/webhooks/mysecretkey/github
 ```
+
+if you configure this in settings section under webhooks in your gitHub repository, you can see the webhook created in your gitHub repository but if you commit code the webhook fail because you need a permission ti run webhook .
+You can set the permission in your Openshift Sandbox by typing the following command:
+
+```
+oc policy add-role-to-user system:webhook -n <your-project-name> -z default
+```
