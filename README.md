@@ -196,5 +196,42 @@ you can check the service is created in Networking -> Services menù.
 7. Secure Route checkbox to enable TLS
 8. Click on 'Create' button
 
-Now you can see the route created in your OpenShift Sandbox, you can check the route in the Routes menu, you can see the route created and you can check the URL of the route.
+Now you can see the created route in your OpenShift Sandbox, you can check the route in the Routes menu, you can see the route created and you can check the URL of the route.
+
+
+### Step 10: Check the application
+
+Retrive URL from Openshift Console by clicking on Routes menu and then click on the route you created in the previous step, you can see the URL of the route.
+
+![img_2.png](doc%2Fimg%2Fimg_2.png)
+
 If you go to the route URL https://<your_route_url>/hello you can see the hello work application running.
+
+### Step 11: Modify the code and redeploy
+
+In order to modify the code and redeploy the application, we have to define  a trigger on our buildConfig  adding the following code in the buildConfig.yaml file in spec section:
+```
+  triggers:
+    - type: GitHub
+      github:
+        secret: mysecretkey
+```
+
+Once you add the trigger you can retrive Webhook URL from the buildConfig in the OpenShift Console, you can see the Webhook URL typing the following command:
+
+```
+oc describe bc sample-hello-work-build-config
+```
+
+the output will be something like this:
+```
+Webhook GitHub:
+        URL:    https://api.rm1.0a51.p1.openshiftapps.com:6443/apis/build.openshift.io/v1/namespaces/giovanni-manzone-dev/buildconfigs/sample-hello-work-build-config/webhooks/<secret>/github
+
+```
+
+the defined secret <secret> is the one you defined in the buildConfig.yaml file, in this case mysecretkey so the url in my case is:
+
+```
+https://api.rm1.0a51.p1.openshiftapps.com:6443/apis/build.openshift.io/v1/namespaces/giovanni-manzone-dev/buildconfigs/sample-hello-work-build-config/webhooks/mysecretkey/github
+```
