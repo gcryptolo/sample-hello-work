@@ -212,8 +212,8 @@ If you go to the route URL https://<your_route_url>/hello you can see the hello 
 In order to modify the code and redeploy the application, we have to define  a trigger on our buildConfig  adding the following code in the buildConfig.yaml file in spec section:
 ```
   triggers:
-    - type: GitHub
-      github:
+    - type: Generic
+      generic:
         secret: mysecretkey
 ```
 
