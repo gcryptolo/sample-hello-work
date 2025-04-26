@@ -1,11 +1,11 @@
-# sample-hello-work
+# Sample hello work LAB-1
 sample hello work for OpenShift Sandbox buildConfig personal LAB-1
 
 refer to [OpenShift Sandbox](https://developers.redhat.com/developer-sandboxx) for more information about OpenShift Sandbox
 refer to [BuildConfig Documentation](https://docs.redhat.com/de/documentation/openshift_container_platform/4.14/pdf/builds_using_buildconfig/openshift_container_platform-4.14-builds_using_buildconfig-en-us.pdf) for technical information about BuildConfig.
 
 
-
+PS: hello work is my mistake, I mean hello world, but I like it so I keep it as it is.
 
 # sample-hello-work LAB-1 index
 
@@ -154,7 +154,7 @@ spec:
   runPolicy: Serial 
   ```
 
-Now you can see the build config create din your Openshift Sandbox, but you dont see it completed because you need to create the ImageStream first and then you can start the build.
+Now you can see the build config create in your Openshift Sandbox, but you dont see it completed because you need to create the ImageStream first and then you can start the build.
 We have to create the ImageStream to store the image that will be created by the buildConfig.
 
 ### Step 6: Create ImageStream in your OpenShift Sandbox
@@ -250,7 +250,10 @@ the defined secret <secret> is the one you defined in the buildConfig.yaml file,
 https://api.rm1.0a51.p1.openshiftapps.com:6443/apis/build.openshift.io/v1/namespaces/giovanni-manzone-dev/buildconfigs/sample-hello-work-build-config/webhooks/mysecretkey/github
 ```
 
-if you configure this in settings section under webhooks in your gitHub repository, you can see the webhook created in your gitHub repository but if you commit code the webhook fail because you need a permission ti run webhook .
+if you configure this in settings section under webhooks in your gitHub repository:
+![img_3.png](doc%2Fimg%2Fimg_3.png)
+
+you can see the webhook created  but if you commit code the webhook fail because you need a permission ti run webhook .
 You can set the permission in your Openshift Sandbox by typing the following command:
 
 ```
